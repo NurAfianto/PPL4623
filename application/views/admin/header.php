@@ -124,10 +124,18 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+          <a href="<?=site_url('admin/hadiah')?>" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Hadiah
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?=site_url('admin/banner')?>" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Banner
               </p>
             </a>
           </li>

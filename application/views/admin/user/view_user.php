@@ -19,30 +19,26 @@
       <th class="text-center">Action</th>
     </tr>
     </thead>
-    <tbody>
-    <tr>
-      <td>1</td>
-      <td>Upin</td>
-      <td>upin1@gmail.com</td>
-      <td>upinganteng</td>
-      <td>5</td>
-      <td>500</td>
-      <td class="text-center">
-        <a href="" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin ingin Menghapus ?')"><i class="far fa-trash-alt"></i> Hapus</a>
-      </td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Ipin</td>
-      <td>Ipinbotak@gmail.com</td>
-      <td>ipinbotak</td>
-      <td>3</td>
-      <td>300</td>
-      <td class="text-center">
-        <a href="" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin ingin Menghapus ?')"><i class="far fa-trash-alt"></i> Hapus</a>
-      </td>
-    </tr>
-    </tbody>
+    <?php 
+					$id = 1;
+					foreach($User as $row)
+					{
+						?>
+						<tr>
+							<td><?php echo $id++; ?></td>
+							<td><?php echo $row->nama; ?></td>
+              <td><?php echo $row->email; ?></td>
+              <td><?php echo $row->password; ?></td>
+              <td><?php echo $row->level; ?></td>
+              <td><?php echo $row->poin; ?></td>
+              <td class="text-center">
+                    <a href="<?php echo base_url(); ?>admin/user/edit/<?php echo $row->id; ?>" class="btn btn-info btn-sm"><i class="far fa-edit"></i> Edit</a>
+                    <a href="<?php echo base_url(); ?>admin/user/delete/<?php echo $row->id; ?>"class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin ingin Menghapus ?')"><i class="far fa-trash-alt"></i> Hapus</a>
+              </td>
+						</tr>
+						<?php
+					}
+					?>
   </table>
   </div>
 </div>

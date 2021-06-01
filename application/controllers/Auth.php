@@ -3,43 +3,118 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Auth extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function index()
 	{
 		$this->load->view('welcome_message');
 	}
 	
 	public function login(){
+		check_admin();
+		check_user();
 		$this->load->view('auth/login');
 	}
 
+	public function process(){
+		$post = $this->input->post(NULL, true);
+		if(isset($post['email']) && isset($post['password'])){
+			$this->load->model('user_m');
+			$query = $this->user_m->login($post);
+			// $query = $this->user_m->get();
+			if($query->num_rows() > 0){
+				$row = $query->row();
+				$params = array(
+					'userid' => $row->id,
+					'level' => $row->level
+				);
+				$this->session->set_userdata($params);
+				echo "<script>
+					alert('Login Sukses');
+					window.location='".site_url('admin/home')."'
+					</script>";
+			}else{
+				echo "<script>
+					alert('Login Gagal');
+					window.location='".site_url('auth/login')."'
+					</script>";
+			}
+		}
+	}
+
+	public function logout(){
+		$params = array('userid', 'level');
+		$this->session->unset_userdata($params);
+		redirect('auth/login');
+	}
+
 	public function register(){
-		$this->load->view('auth/register');
+		check_admin();
+		check_user();
+		$post = $this->input->post(NULL, true);
+		if(isset($post['register'])){
+			$this->load->model('user_m');
+			$rand = substr(md5(microtime()),rand(0,26),6);
+			$post['recovery_code'] = $rand;
+			$query = $this->user_m->add($post);
+			if($this->db->affected_rows() > 0){
+				$query = $this->user_m->add_user($post);
+				redirect('auth/recovery?r='.$rand);
+			}else{
+				echo "<script>
+					alert('Registrasi Gagal');
+					window.location='".site_url('auth/register')."'
+					</script>";
+			}
+			
+		}else{
+			$this->load->view('auth/register');
+		}
 	}
 
 	public function recovery(){
-		$this->load->view('auth/recovery_code');
+		$data['recovery'] =  $_GET['r'];
+		$this->load->view('auth/recovery_code', $data);
 	}
 
 	public function forgot_password(){
-		$this->load->view('auth/forgot_pass');
+		$post = $this->input->post(NULL, true);
+		if(isset($post['submit'])){
+			$this->load->model('user_m');
+			$data['row'] = $this->user_m->get_by_recovery($post['recovery'])->row();
+			if($data['row']!=null){
+				// print_r($data['row']->id_user);
+				$this->load->view('auth/forgot_pass2',$data);
+			}else{
+				echo "<script>
+					alert('Recovery Code Salah');
+					window.location='".site_url('auth/forgot_password')."'
+					</script>";
+			}
+		}else{
+			$this->load->view('auth/forgot_pass');
+		}
 	}
 
 	public function reset_password(){
-		$this->load->view('auth/forgot_pass2');
+		$post = $this->input->post(NULL, true);
+		if($post['password']==$post['con_password']){
+			$this->load->model('user_m');
+			$this->user_m->edit_pass($post);
+			if($this->db->affected_rows() > 0){
+				echo "<script>
+					alert('Password Berhasil Diubah');
+					window.location='".site_url('auth/login')."'
+					</script>";
+			}else{
+				echo "<script>
+					alert('Password Gagal Diubah');
+					window.location='".site_url('auth/forgot_password')."'
+					</script>";
+			}
+		}else{
+			echo "<script>
+					alert('Periksa Kembali Password Anda');
+					window.location='".site_url('auth/forgot_password')."'
+					</script>";
+		}
 	}
 }

@@ -57,7 +57,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item text-center">
+          <a href="<?=site_url('auth/logout')?>" class="dropdown-item text-center">
             <i class="fas fa-sign-out-alt"></i>&nbsp; Sign-Out
           </a>
         </div>

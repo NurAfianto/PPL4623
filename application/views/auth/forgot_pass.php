@@ -24,9 +24,9 @@
             <h5><b>Pulihkan Password</b></h5>
         </div>
 
-        <form action="<?=base_url()?>assets/index3.html" method="post">
+        <form action="<?=base_url('auth/forgot_password')?>" method="post">
             <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Recovery Code">
+            <input type="text" name="recovery" class="form-control" placeholder="Recovery Code">
             <div class="input-group-append">
                 <div class="input-group-text">
                 </div>
@@ -38,7 +38,7 @@
             <!-- /.col -->
             <div class="col-8"></div>
             <div class="col-4">
-                <button type="submit" class="btn btn-primary btn-block btn-coklat">Next  &nbsp;<i class="fa fa-chevron-right"></i></button>
+                <button name="submit" type="submit" class="btn btn-primary btn-block btn-coklat">Next  &nbsp;<i class="fa fa-chevron-right"></i></button>
             </div>
             <!-- /.col -->
             </div>

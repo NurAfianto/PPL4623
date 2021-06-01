@@ -26,16 +26,16 @@
 
         <p class="text-left">Belum punya akun ? <a href="<?=site_url('auth/register')?>" class="text-coklat link-coklat">Daftar di sini</a></p>
 
-        <form action="<?=base_url()?>assets/index3.html" method="post">
+        <form action="<?=base_url()?>auth/process" method="post">
             <div class="input-group mb-3">
-            <input type="email" class="form-control" placeholder="Email">
+            <input type="email" name="email" class="form-control" placeholder="Email">
             <div class="input-group-append">
                 <div class="input-group-text">
                 </div>
             </div>
             </div>
             <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="password" name="password" class="form-control" placeholder="Password">
             <div class="input-group-append">
                 <div class="input-group-text">
                 </div>

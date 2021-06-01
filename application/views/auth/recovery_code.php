@@ -24,7 +24,7 @@
         </div>
 
             <div class="form-group mb-3">
-                <input type="text" class="form-control" placeholder="Diisi Recovery Codenya" readonly>
+                <p class="h4 text-center border p-2 rounded"><?=$recovery?></p>
             </div>
             <a href="<?=site_url()?>auth/login" class="btn btn-primary blok-coklat btn-coklat float-right">Next &nbsp;<i class="fa fa-chevron-right"></i></a>
         </div>

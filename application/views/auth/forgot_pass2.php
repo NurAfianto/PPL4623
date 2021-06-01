@@ -24,18 +24,19 @@
             <h5><b>Pulihkan Password</b></h5>
         </div>
 
-        <form action="<?=base_url()?>assets/index3.html" method="post">
+        <form action="<?=base_url('auth/reset_password')?>" method="post">
             <div class="form-group mb-3">
-                <input type="text" class="form-control" placeholder="Username" readonly>
+                <input type="hidden" class="form-control" name="id_user" value="<?=$row->id_user?>" placeholder="id" readonly>
+                <input type="text" class="form-control" name="nama" value="<?=$row->nama?>" placeholder="Nama" readonly>
             </div>
             <div class="form-group mb-3">
-                <input type="text" class="form-control" placeholder="Email" readonly>
+                <input type="text" class="form-control" name="email" value="<?=$row->email?>" placeholder="Email" readonly>
             </div>
             <div class="form-group mb-3">
-                <input type="password" class="form-control" placeholder="Password">
+                <input type="password" class="form-control" name="password" placeholder="Password">
             </div>
             <div class="form-group mb-3">
-                <input type="password" class="form-control" placeholder="Confirm Password">
+                <input type="password" class="form-control" name="con_password" placeholder="Confirm Password">
             </div>
 
             <div class="row">

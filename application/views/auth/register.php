@@ -24,40 +24,40 @@
 
         
 
-        <form action="<?=base_url()?>assets/index3.html" method="post">
+        <form action="<?=base_url('auth/register')?>" method="post">
             <div class="form-group mb-3">
-                <input type="text" class="form-control" placeholder="Nama">
+                <input type="text" name="nama" class="form-control" placeholder="Nama" required>
             </div>
             <div class="form-group mb-3">
-                <input type="email" class="form-control" placeholder="Email">
+                <input type="email" name="email" class="form-control" placeholder="Email" required>
             </div>
             <div class="form-group mb-3">
-                <input type="password" class="form-control" placeholder="Password">
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
             </div>
             <div class="form-group mb-3">
-                <input type="text" class="form-control" placeholder="Nomor HP">
+                <input type="text" name="no_hp" class="form-control" placeholder="Nomor HP" required>
             </div>
             <div class="form-group mb-3">
-                <select name="rekening" class="form-control">
+                <select name="rekening" name="nama_rek" class="form-control" required>
                     <option value="">Nama Rekening</option>
-                    <option value="">BRI</option>
-                    <option value="">BCA</option>
-                    <option value="">BNI</option>
-                    <option value="">Mandiri</option>
+                    <option value="BRI">BRI</option>
+                    <option value="BCA">BCA</option>
+                    <option value="BNI">BNI</option>
+                    <option value="Mandiri">Mandiri</option>
                 </select>
             </div>
             <div class="form-group mb-3">
-                <input type="number" class="form-control" placeholder="Nomor Rekening">
+                <input type="number" name="no_rek" class="form-control" placeholder="Nomor Rekening" required>
             </div>
             <div class="form-group mb-3">
-                <textarea type="text" class="form-control">Alamat
+                <textarea type="text" name="alamat" class="form-control" required>Alamat
                 </textarea>
             </div>
             <div class="row">
 
             <div class="col-8"></div>
             <div class="col-4">
-                <button type="submit" class="btn btn-primary btn-block btn-coklat">Sign Up</button>
+                <button name="register" type="submit" class="btn btn-primary btn-block btn-coklat">Sign Up</button>
             </div>
             </div>
         </form>

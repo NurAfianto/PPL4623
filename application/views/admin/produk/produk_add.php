@@ -7,8 +7,8 @@
   </div>
   <div class="card-body">
   <div class="col-md-12">
-    <a href="" class="btn btn-warning btn-md"><i class="fas fa-arrow-left"></i> Back</a>
-    <form action="">
+    <a href="<?=site_url('admin/produk')?>" class="btn btn-warning btn-md"><i class="fas fa-arrow-left"></i> Back</a>
+    <form action="<?=site_url('admin/produk/add')?>" method="POST" enctype="multipart/form-data">
     <div class="col-md-6 mx-auto mt-4">
         <div class="form-group">
             <label for="nama_produk">Nama Produk</label>
@@ -17,8 +17,8 @@
         <div class="form-group">
             <label for="kategori">Kategori</label>
             <select name="kategori" id="kategori" class="select2 form-control">
-                <option value="makanan">Makanan</option>
-                <option value="makanan">Minuman</option>
+                <option value="1">Makanan</option>
+                <option value="2">Minuman</option>
             </select>
         </div>
         <div class="form-group">
@@ -31,11 +31,11 @@
         </div>
         <div class="form-group">
             <label for="gambar">Gambar</label>
-            <input type="file" id="gambar" name="gambar" class="form-control">
+            <input type="file" id="gambar" name="image" class="form-control">
         </div>
         <div class="form-group mt-4 d-flex justify-content-between">
             <button class="btn btn-default col-3"><i class="fas fa-undo"></i> Reset</button>
-            <button class="btn btn-primary col-3"><i class="fas fa-paper-plane"></i> Submit</button>
+            <button name="submit" class="btn btn-primary col-3"><i class="fas fa-paper-plane"></i> Submit</button>
         </div>
     </div>
     </form>

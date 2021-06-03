@@ -7,8 +7,8 @@
   </div>
   <div class="card-body">
   <div class="col-md-12">
-    <a href="" class="btn btn-warning btn-md"><i class="fas fa-arrow-left"></i> Back</a>
-    <form action="">
+    <a href="<?=site_url('admin/produk')?>" class="btn btn-warning btn-md"><i class="fas fa-arrow-left"></i> Back</a>
+    <form action="<?=site_url('admin/produk/edit')?>" method="POST" enctype="multipart/form-data">
     <div class="col-md-6 mx-auto mt-4">
         <div class="form-group">
             <label for="nama_produk">Nama Produk</label>

@@ -9,5 +9,18 @@ class Dashboard extends CI_Controller {
 		$this->load->view('user/dashboard');
 		$this->load->view('user/footer');
 	}
+
+	public function d()
+	{
+		$this->load->view('user/dashboard2');
+	}
+
+	public function cart()
+	{
+		$this->load->view('user/header');
+		$this->load->view('user/cart');
+		$this->load->view('user/footer');
+	}
+
 	
 }

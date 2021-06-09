@@ -17,52 +17,92 @@
   <link rel="stylesheet" href="<?=base_url()?>assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="<?=base_url()?>assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="<?=base_url()?>assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-</head>
-<body class="sidebar-collapse">
-<!-- Site wrapper -->
-<div class="wrapper">
-
-    <!-- Navbar -->
-    <nav class="main-header navbar navbar-white navbar-light navbar-expand bg-light">
+  <link rel="stylesheet" href="<?=base_url()?>assets/css/style-user.css">
+  </head>
+<body class="">
+<div class="" style="background-color: #F7F5F5;">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light ml-0 pl-3 pr-3">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+      <li class="nav-item d-sm-inline-block">
         <a href="<?=site_url('user/dashboard')?>">
-            <img src="<?=base_url()?>assets/pict/icon/Logo_trans.png" width="50" class="brand-image img-circle ml-4 m-1" alt="Logo">
+            <img src="<?=base_url()?>assets/pict/icon/Logo_trans.png" width="50" class="brand-image img-circle" alt="Logo">
         </a>
-        
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Food</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Beverages</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Challenges</a>
-            </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-            <ul class="navbar-nav ml-1">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
-                </li>
-            </ul>
+      </li>
+      <li class="nav-item d-none d-md-inline-block mt-2 active">
+        <a href="<?=site_url('user/dashboard')?>" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block mt-2">
+        <a href="<?=site_url('user/product')?>" class="nav-link">Food</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block mt-2">
+        <a href="#" class="nav-link">Beverages</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block mt-2">
+        <a href="#" class="nav-link">Challenges</a>
+      </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Navbar Search -->
+      <li class="nav-item">
+        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+          <i class="fas fa-search"></i>
+        </a>
+        <div class="navbar-search-block nav-search">
+          <form class="form-inline">
+            <div class="input-group input-group-sm">
+              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-navbar" type="submit">
+                  <i class="fas fa-search"></i>
+                </button>
+                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
-    </nav>
-    <!-- ./navbar -->
+      </li>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper px-5">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        
-    </section>
+      
+        <li class="nav-item">
+          <?php 
+            $cart = '<div class="nav-link"><i class="fas fa-shopping-cart"></i><span class="badge badge-warning navbar-badge">'.$this->cart->total_items().'</span></div>'
+          ?>
+          <?php echo anchor('user/product/detail_cart',$cart) ?>
+        </li>
 
-    <!-- Main content -->
-    <section class="content">
-    
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown"  style="margin-top:-2px">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <img src="<?=base_url()?>assets/pict/icon/user.png" width="30" class="brand-image img-circle" alt="user-icon">
+          <span class="badge badge-warning navbar-badge">15</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> 4 new messages
+            <span class="float-right text-muted text-sm">3 mins</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> 8 friend requests
+            <span class="float-right text-muted text-sm">12 hours</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-file mr-2"></i> 3 new reports
+            <span class="float-right text-muted text-sm">2 days</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->

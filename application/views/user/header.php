@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="<?=base_url()?>assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="<?=base_url()?>assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="<?=base_url()?>assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
-  <link rel="stylesheet" href="<?=base_url()?>assets/css/style-user.css">
+  <link rel="stylesheet" href="<?=base_url()?>/assets/css/style-user.css">
   </head>
 <body class="">
 <div class="" style="background-color: #F7F5F5;">
@@ -80,27 +80,25 @@
       <li class="nav-item dropdown"  style="margin-top:-2px">
         <a class="nav-link" data-toggle="dropdown" href="#">
           <img src="<?=base_url()?>assets/pict/icon/user.png" width="30" class="brand-image img-circle" alt="user-icon">
-          <span class="badge badge-warning navbar-badge">15</span>
+          <!-- <span class="badge badge-warning navbar-badge">15</span> -->
         </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
+        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+          <span class="dropdown-item dropdown-header"><?=$_SESSION['nama']?></span>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
+            <i class="fas fa-envelope mr-2"></i> Bronzee
           </a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
+            <i class="fas fa-cog"></i> Setting
+            <!-- <span class="float-right text-muted text-sm">12 hours</span> -->
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
+          <a href="<?=site_url('auth/logout')?>" class="dropdown-item">
+            <i class="fas fa-sign-out-alt"></i> Log Out
+            <!-- <span class="float-right text-muted text-sm">2 days</span> -->
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
       </li>
     </ul>

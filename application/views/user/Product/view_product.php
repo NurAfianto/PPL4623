@@ -1,4 +1,6 @@
 <!-- Content Wrapper. Contains page content -->
+
+
 <div class="content col-md-10 mx-auto">
 <!-- Main content -->
     <section class="content mt-5  rounded">
@@ -21,22 +23,25 @@
 
     <?php foreach ($item as $itm) : ?>
 
-    <div class="item-card card rounded-lg item-card">
+    <div class="item-card card rounded-lg">
         <!-- image -->
         <img src="<?php echo base_url().'/upload/product/'. $itm->gambar?>" class="card-img-top"  alt="<?php echo $itm->nama_produk ?>">
         <!-- ./image -->
         <!-- detail item -->
-        <div class="card-body text-wrap">
-            <h5 class="nama-item"><?php echo $itm->nama_produk ?></h5>
+        <div class="card-body blok-item">
+            <h6 class="nama-item text-coklat"><?php echo $itm->nama_produk ?></h6>
             <!-- <div class="row"> -->
                 <div class="">
-                    <span class="harga-item align-middle"><p>Rp. <?php echo number_format($itm->harga,0,",",".") ?></p></span>
+                    <span class="align-middle harga-item"><p>Rp. <?php echo number_format($itm->harga,0,",",".") ?></p></span>
                 </div>
-                <div class="">
-                    <?php echo anchor('user/product/add_cart/'.$itm->id_produk,'<div class="btn btn-sm btn-success btn-buy float-right">Add <i class="fas fa-cart-plus"></i></div>')?>
+                <div class="" style="margin-top: 30px;">
+                    <?php echo anchor('user/product/add_cart/'.$itm->id_produk,'<div class="btn btn-sm btn-success btn-buy">Add <i class="fas fa-cart-plus"></i></div>')?>
                     <!-- <button class="btn btn-sm btn-success btn-buy float-right">Add <i class="fas fa-cart-plus"></i></button> -->
                 </div>
             <!-- </div> -->
+        </div>
+        <div>
+            
         </div>
         <!-- ./detail item -->
     </div>

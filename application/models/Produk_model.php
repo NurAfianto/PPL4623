@@ -5,6 +5,7 @@ class Produk_model extends CI_Model {
 
 	public function get(){
 		$this->db->from('tb_produk');
+		$this->db->join('tb_kategori', 'tb_kategori.no = tb_produk.id_kategori');
 		$query = $this->db->get();
         return $query;
 	}

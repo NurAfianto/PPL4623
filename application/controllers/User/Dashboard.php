@@ -12,7 +12,7 @@ class Dashboard extends CI_Controller {
 
 	public function d()
 	{
-		$this->load->view('user/dashboard2');
+		$this->load->view('user/games/flush');
 	}
 
 	public function cart()

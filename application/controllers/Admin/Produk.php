@@ -37,8 +37,10 @@ class Produk extends CI_Controller {
 			
 		}
 		else{
+			$this->load->model('kategori_model');
+			$data['kategori'] = $this->kategori_model->getAll();
 			$this->load->view('admin/header');
-			$this->load->view('admin/produk/produk_add');
+			$this->load->view('admin/produk/produk_add',$data);
 			$this->load->view('admin/footer');
 		}
 	}

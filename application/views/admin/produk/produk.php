@@ -29,7 +29,7 @@
     <tr>
       <td><?=$no++?></td>
       <td><?=$row->nama_produk?></td>
-      <td><?=$row->id_kategori?></td>
+      <td><?=$row->nama?></td>
       <td><?=$row->harga?></td>
       <td><?=$row->poin?></td>
       <td class="text-center">

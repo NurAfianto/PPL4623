@@ -17,8 +17,15 @@
         <div class="form-group">
             <label for="kategori">Kategori</label>
             <select name="kategori" id="kategori" class="select2 form-control">
-                <option value="1">Makanan</option>
-                <option value="2">Minuman</option>
+                <?php 
+                
+                foreach($kategori as $key=>$row)
+                {
+                ?>
+                <option value="<?=$row->no?>"><?=$row->nama?></option>
+                <?php 
+                }
+                ?>
             </select>
         </div>
         <div class="form-group">

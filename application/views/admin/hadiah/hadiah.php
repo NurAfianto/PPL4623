@@ -20,30 +20,24 @@
       <th class="text-center">Action</th>
     </tr>
     </thead>
-    <tbody>
-    <tr>
-      <td>1</td>
-      <td>Roti Coklat</td>
-      <td>Nescafe</td>
-      <td>500</td>
-      <td>Silver</td>
-      <td class="text-center">
-      <a href="<?=site_url('admin/hadiah/edit')?>" class="btn btn-info btn-sm"><i class="far fa-edit"></i> Edit</a>
-        <a href="" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin ingin Menghapus ?')"><i class="far fa-trash-alt"></i> Hapus</a>
-      </td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Teh Tarik</td>
-      <td>Kebab</td>
-      <td>1100</td>
-      <td>Gold</td>
-      <td class="text-center">
-      <a href="<?=site_url('admin/hadiah/edit')?>"class="btn btn-info btn-sm"><i class="far fa-edit"></i> Edit</a>
-        <a href="" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin ingin Menghapus ?')"><i class="far fa-trash-alt"></i> Hapus</a>
-      </td>
-    </tr>
-    </tbody>
+    <?php 
+					$id = 1;
+					foreach($Hadiah as $row)
+					{
+						?>
+						<tr>
+							<td><?php echo $id++; ?></td>
+							<td><?php echo $row->nama; ?></td>
+              <td><?php echo $row->produk; ?></td>
+              <td><?php echo $row->poin; ?></td>
+              <td><?php echo $row->level; ?></td>
+              <td class="text-center">
+                    <a href="<?php echo base_url(); ?>admin/hadiah/edit/<?php echo $row->id; ?>" class="btn btn-info btn-sm"><i class="far fa-edit"></i> Edit</a>
+              </td>
+						</tr>
+						<?php
+					}
+					?>
   </table>
   </div>
 </div>

@@ -50,6 +50,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['user/cart'] = 'user/dashboard/cart';
+$route['user/games'] = 'user/dashboard/games';
+$route['user/tanam'] = 'user/dashboard/d';
+$route['user/egg'] = 'user/dashboard/egg';
+$route['user/egg/open'] = 'user/dashboard/egg_open';
 $route['default_controller'] = 'Auth/login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

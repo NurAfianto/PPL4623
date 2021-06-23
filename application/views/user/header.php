@@ -40,7 +40,7 @@
         <a href="#" class="nav-link">Beverages</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block mt-2">
-        <a href="#" class="nav-link">Challenges</a>
+        <a href="<?=site_url('user/games')?>" class="nav-link">Challenges</a>
       </li>
     </ul>
 

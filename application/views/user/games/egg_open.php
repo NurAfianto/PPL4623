@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="<?=base_url()?>plugins/bootstrap-slider/css/bootstrap-slider.min.css">
   <link rel="stylesheet" href="<?=base_url()?>assets/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="<?=base_url()?>assets/css/style-user.css">
-  <link rel="stylesheet" href="<?=base_url()?>/assets/css/style-flush.css">
+  <link rel="stylesheet" href="<?=base_url()?>assets/css/style-flush.css">
 </head>
 <body class="">
 <div class="bg-hutan">
@@ -21,21 +21,14 @@
         <img src="<?=base_url('assets/pict/Icon/icon-back.png')?>" alt="" srcset="" class="img-siram">
     </a>
     <div class="">
-        <img src="<?=base_url('assets/pict/Icon/coffee.png')?>" alt="" srcset="" class="img-tanaman">
-        <div class="box-air">
-            <div class="box-air-terisi" id="box-air" ></div>
+        <div class="kotak-koin">
+            <img src="<?=base_url('assets/pict/Icon/koin.png')?>" alt="" srcset="" class="" width="150"> <p><?=$poin?></p>
         </div>
-        <div class="text-air-terisi">
-            <img src="<?=base_url('assets/pict/Icon/water-drop.png')?>" alt="" srcset="" width="40">
-            <span id="angka-air">250</span>
-        </div>
+        <a href="">
+            <img src="<?=base_url('assets/pict/Icon/telur_pecah.png')?>" alt="" srcset="" class="img-egg-open">
+        </a>
+        <img src="<?=base_url('assets/pict/Icon/sarang.png')?>" alt="" srcset="" class="img-sarang">
     </div>
-    <button class="btn btn-siram" onclick="siram()">
-        <img src="<?=base_url('assets/pict/Icon/icon-siram.png')?>" alt="" srcset="" class="img-siram">
-        <div class="text-angka">
-            50
-        </div>
-    </button>
 
 
 </div>

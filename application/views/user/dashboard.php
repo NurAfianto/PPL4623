@@ -73,7 +73,7 @@
               </div>
               <div class="btn-dash">
               <figure>
-                  <a href="">
+                  <a href="<?=site_url('user/games')?>">
                       <img src="<?=base_url()?>assets/pict/icon/joystick.png" class=" w-50 mb-2 img-fluid" alt="" srcset="">
                   </a>
                   <figcaption>Challenges</figcaption>

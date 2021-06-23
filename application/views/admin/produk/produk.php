@@ -15,6 +15,7 @@
       <th>No</th>
       <th>Nama</th>
       <th>Kategori</th>
+      <th>Gambar</th>
       <th>Harga</th>
       <th>Poin</th>
       <th class="text-center">Action</th>
@@ -30,10 +31,12 @@
       <td><?=$no++?></td>
       <td><?=$row->nama_produk?></td>
       <td><?=$row->nama?></td>
+      <td class="text-center"><img src="<?php echo base_url('upload/product/'.$row->gambar) ?>" width="64" />
+			</td>
       <td><?=$row->harga?></td>
       <td><?=$row->poin?></td>
       <td class="text-center">
-        <a href="<?=site_url('admin/produk/edit')?>" class="btn btn-info btn-sm"><i class="far fa-edit"></i> Edit</a>
+        <a href="<?=site_url('admin/produk/edit/'.$row->id_produk)?>" class="btn btn-info btn-sm"><i class="far fa-edit"></i> Edit</a>
         <a href="" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin ingin Menghapus ?')"><i class="far fa-trash-alt"></i> Hapus</a>
       </td>
     </tr>

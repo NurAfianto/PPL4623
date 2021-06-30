@@ -16,7 +16,7 @@
               <div class="card-body">
                 <!-- item card -->
                 <div class="col-md-12 rounded mx-auto p-3 mb-4 row">
-                  <a href="">
+                  <a href="<?=site_url('user/login_harian')?>">
                     <img src="<?=base_url('assets/pict/bg/banner_tanam.jpg')?>" alt="" class="w-100">
                   </a>
 

@@ -20,6 +20,10 @@
     bottom: 10px;
 }
 
+.btn-rounded{
+    border-radius: 30px !important;
+}
+
 .img-tanaman{
     position: fixed;
     right: 40%;

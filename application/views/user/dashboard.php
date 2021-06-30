@@ -97,7 +97,7 @@
               </div>
               <div class="btn-dash">
               <figure>
-                  <a href="">
+                  <a href="<?=site_url('user/hadiah')?>">
                       <img src="<?=base_url()?>assets/pict/icon/gift-box.png" class=" w-50 mb-2 img-fluid" alt="" srcset="">
                   </a>
                   <figcaption>Prize</figcaption>

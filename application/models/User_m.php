@@ -18,6 +18,13 @@ class User_m extends CI_Model {
         return $query;
 	}
 
+	public function get_detail($nama){
+		$this->db->from('tb_user_detail');
+		$this->db->where('nama', $nama);
+		$query = $this->db->get();
+        return $query;
+	}
+
 	public function add($post){
 		$params = [
 			'nama' => $post['nama'],

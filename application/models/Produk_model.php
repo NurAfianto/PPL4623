@@ -58,5 +58,11 @@ class Produk_model extends CI_Model {
 		$this->db->update('tb_produk', $params);
 	}
 
+	public function delete($id){	
+
+		$this->db->where('id_produk', $id);
+		$this->db->delete('tb_produk');
+	}
+
 
 }

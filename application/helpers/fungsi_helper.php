@@ -23,3 +23,11 @@ function check_not_login(){
         redirect('auth/login');
     }
 }
+
+function print_user_detail(){
+    $ci =& get_instance();
+    $ci->load->model('user_m');
+    $user_name = $ci->session->userdata('nama');
+    $user = $ci->user_m->get_detail($user_name);
+    return $user->row();
+}

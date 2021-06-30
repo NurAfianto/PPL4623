@@ -86,16 +86,16 @@
           <span class="dropdown-item dropdown-header"><?=$_SESSION['nama']?></span>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> Bronzee
+            <img src="<?=base_url()?>assets/pict/icon/<?=print_user_detail()->level_user?>.png" alt="" width="25">&nbsp;&nbsp;&nbsp;<?=print_user_detail()->level_user?>
           </a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
-            <i class="fas fa-cog"></i> Setting
+            <i class="fas fa-cog"></i> &nbsp;&nbsp;&nbsp; Setting
             <!-- <span class="float-right text-muted text-sm">12 hours</span> -->
           </a>
           <div class="dropdown-divider"></div>
           <a href="<?=site_url('auth/logout')?>" class="dropdown-item">
-            <i class="fas fa-sign-out-alt"></i> Log Out
+            <i class="fas fa-sign-out-alt"></i> &nbsp;&nbsp;&nbsp; Log Out
             <!-- <span class="float-right text-muted text-sm">2 days</span> -->
           </a>
           <div class="dropdown-divider"></div>

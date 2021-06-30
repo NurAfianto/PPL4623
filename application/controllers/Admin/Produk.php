@@ -28,12 +28,14 @@ class Produk extends CI_Controller {
 					$post['image'] = $this->upload->data('file_name');
 					$this->load->model('Produk_model');
 					$this->Produk_model->add($post);
+					$this->session->set_flashdata('success', 'Tambah data berhasil');
 					redirect('admin/produk');
 	
 				}else{
 					echo "gagal upload";
 				}
 			}
+			$this->session->set_flashdata('success', 'Tambah data berhasil');
 			redirect('admin/produk');
 			
 		}
@@ -71,6 +73,7 @@ class Produk extends CI_Controller {
 			}else{
 				$this->Produk_model->editNoImage($post);
 			}
+			$this->session->set_flashdata('success', 'Edit data berhasil');
 			redirect('admin/produk');
 
 
@@ -83,6 +86,14 @@ class Produk extends CI_Controller {
 			$this->load->view('admin/produk/produk_edit',$data);
 			$this->load->view('admin/footer');
 		}
+	}
+
+	public function delete($id=NULL){
+		$this->load->model('Produk_model');
+		$this->Produk_model->delete($id);
+		$this->session->set_flashdata('success', 'Data telah dihapus');
+		redirect('admin/produk');
+
 	}
 
 	

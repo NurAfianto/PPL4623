@@ -1,5 +1,11 @@
 
 <div class="card">
+  <?php if($this->session->flashdata('success')!=null){?>
+    <div class="alert alert-success alert-dismissible mb-3">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <?=$this->session->flashdata('success')?>
+    </div>
+  <?php } ?>
   <div class="card-header">
     <h4>
       Produk
@@ -37,7 +43,7 @@
       <td><?=$row->poin?></td>
       <td class="text-center">
         <a href="<?=site_url('admin/produk/edit/'.$row->id_produk)?>" class="btn btn-info btn-sm"><i class="far fa-edit"></i> Edit</a>
-        <a href="" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin ingin Menghapus ?')"><i class="far fa-trash-alt"></i> Hapus</a>
+        <a href="<?=site_url('admin/produk/delete/'.$row->id_produk)?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin ingin Menghapus ?')"><i class="far fa-trash-alt"></i> Hapus</a>
       </td>
     </tr>
 

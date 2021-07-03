@@ -130,6 +130,58 @@ class Dashboard extends CI_Controller {
 		$this->load->view('user/footer');
 	}
 
+	public function profil()
+	{
+		$this->load->model('user_m');
+		$nama = $_SESSION['nama'];
+		$data['data'] = $this->user_m->get_detail($nama)->row();
+		// print_r($data['data']);
+		$this->load->view('user/header');
+		$this->load->view('user/profil/profil',$data);
+		$this->load->view('user/footer');
+	}
+
+	public function profil_edit()
+	{
+		$this->load->model('user_m');
+		$post = $this->input->post(NULL, true);
+		// print_r($post);
+		if(isset($post['update'])){
+			if($post['password']!=$post['password_con']){
+				$this->session->set_flashdata('failed', 'Password dan Password Confirmation harus sama');
+				$this->load->view('user/header');
+				$this->load->view('user/profil/profil_edit',$post);
+				$this->load->view('user/footer');
+			}else{
+				$this->user_m->update_profil($post);
+				$params = array(
+					'nama' => $post['nama'],
+					'email' => $post['email']
+				);
+				$this->session->set_userdata($params);
+				redirect('user/dashboard/profil');
+			}
+		}else{
+			$this->load->view('user/header');
+			$this->load->view('user/profil/profil_edit',$post);
+			$this->load->view('user/footer');
+		}
+	}
+
+	public function user_lev()
+	{
+		$this->load->view('user/header');
+		$this->load->view('user/profil/level');
+		$this->load->view('user/footer');
+	}
+
+	public function trans()
+	{
+		$this->load->view('user/header');
+		$this->load->view('user/profil/transaction');
+		$this->load->view('user/footer');
+	}
+
 	public function listhadiah()
 	{
 		$this->load->model('hadiah_u_m');

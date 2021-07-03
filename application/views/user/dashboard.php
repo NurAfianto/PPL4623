@@ -57,7 +57,7 @@
             <div class="d-flex px-2 py-1 p-3 row text-center font-weight-bold">
               <div class="btn-dash">
               <figure>
-                  <a href="">
+                  <a href="<?=site_url('user/product?kategori=10')?>">
                       <img src="<?=base_url()?>assets/pict/icon/french-fries.png" class="w-50 mb-2 img-fluid" alt="" srcset="">
                   </a>
                   <figcaption>Food</figcaption>
@@ -65,7 +65,7 @@
               </div>
               <div class="btn-dash">
               <figure>
-                  <a href="">
+                  <a href="<?=site_url('user/product?kategori=11')?>">
                       <img src="<?=base_url()?>assets/pict/icon/coffee-cup.png" class="w-50 mb-2 img-fluid" alt="" srcset="">
                   </a>
                   <figcaption>Beverages</figcaption>
@@ -81,7 +81,7 @@
               </div>
               <div class="btn-dash">
               <figure>
-                  <a href="">
+                  <a href="<?=site_url('user/product')?>">
                       <img src="<?=base_url()?>assets/pict/icon/ribbon.png" class="w-50  mb-2 img-fluid" alt="" srcset="">
                   </a>
                   <figcaption>Special Offer</figcaption>

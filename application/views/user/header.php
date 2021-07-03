@@ -34,10 +34,10 @@
         <a href="<?=site_url('user/dashboard')?>" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block mt-2">
-        <a href="<?=site_url('user/product')?>" class="nav-link">Food</a>
+        <a href="<?=site_url('user/product?kategori=10')?>" class="nav-link">Food</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block mt-2">
-        <a href="#" class="nav-link">Beverages</a>
+        <a href="<?=site_url('user/product?kategori=11')?>" class="nav-link">Beverages</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block mt-2">
         <a href="<?=site_url('user/games')?>" class="nav-link">Challenges</a>

@@ -20,7 +20,6 @@
     <div class="card-body row ml-1">
 
     <!-- item-card -->
-
     <?php foreach ($item as $itm) : ?>
 
     <div class="item-card card rounded-lg">
@@ -35,7 +34,7 @@
                     <span class="align-middle harga-item"><p>Rp. <?php echo number_format($itm->harga,0,",",".") ?></p></span>
                 </div>
                 <div class="" style="margin-top: 30px;">
-                    <?php echo anchor('user/product/add_cart/'.$itm->id_produk,'<div class="btn btn-sm btn-success btn-buy">Add <i class="fas fa-cart-plus"></i></div>')?>
+                    <?php echo anchor('user/product/add_cart/'.$itm->id_produk.'?kategori='.@$_GET['kategori'],'<div class="btn btn-sm btn-success btn-buy">Add <i class="fas fa-cart-plus"></i></div>')?>
                     <!-- <button class="btn btn-sm btn-success btn-buy float-right">Add <i class="fas fa-cart-plus"></i></button> -->
                 </div>
             <!-- </div> -->

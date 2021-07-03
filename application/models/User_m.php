@@ -12,8 +12,11 @@ class User_m extends CI_Model {
 		return $query;
 	}
 
-	public function get(){
+	public function get($id=null){
 		$this->db->from('tb_user');
+		if($id!=null){
+			$this->db->where('id', $id);
+		}
 		$query = $this->db->get();
         return $query;
 	}
@@ -76,7 +79,31 @@ class User_m extends CI_Model {
 		$this->db->where('nama',$params2['nama']);
 		$this->db->where('email',$params2['email']);
 		$this->db->update('tb_user',$params2);
+	}
 
+	public function update_profil($post){
+		$params = [
+			'id_user' => $post['id_user'],
+			'nama' => $post['nama'],
+			'email' => $post['email'],
+			'password' => $post['password'],
+			'no_hp' => $post['no_hp'],
+			'nama_rek' => $post['nama_rek'],
+			'no_rek' => $post['no_rek'],
+			'alamat' => $post['alamat']
+		];
+
+		$params2 = [
+			'email' => $post['email'],
+			'nama' => $post['nama'],
+			'password' => $post['password']
+		];
+
+		$this->db->where('id_user',$params['id_user']);
+		$this->db->update('tb_user_detail',$params);
+
+		$this->db->where('id',$params['id_user']+1);
+		$this->db->update('tb_user',$params2);
 	}
 
 }

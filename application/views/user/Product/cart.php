@@ -20,21 +20,21 @@
                     <div class="col-md-3 text-center" style="height: 100px;">
                         <img src="<?php echo base_url().'upload/product/'.$items['picture']?>" height="100px" class="brand-image" alt="user-produk">
                     </div>
-                    <div class="col-md-9 row">
-                        <div class="col-md-9">
-                            <h4 class="mb-4 mt-1"><b><?php echo $items['name']?></b></h4>
-                            <span class="h5" >
+                    <div class="col-md-8 row">
+                        <div class="col-md-8">
+                            <h4 class="mb-4 mt-1 text-center"><b><?php echo $items['name']?></b></h4>
+                            <div class="h5 text-cart" >
                             <?php echo anchor('user/cart/min_qty/'.$items['rowid'].'/'.$items['qty'],'<div class="btn btn-sm btn-coklat text-white"><i class="fas fa-minus"></i></div>')?>
                                  &nbsp;<b>
                                     <input type="number" class="btn btn-sm btn-default p-0 pl-2" value="<?php echo $items['qty']?>" style="width:70px !important;font-size:18px" readonly>
                                 </b> &nbsp; 
                             <?php echo anchor('user/cart/plus_qty/'.$items['rowid'].'/'.$items['qty'],'<div class="btn btn-sm btn-coklat text-white"><i class="fas fa-plus"></i></div>')?>
-                                </span>
+                                </div>
                         </div>
-                        <div class="col-md-2 pt-5">
+                        <div class="col-md-3 pt-5 text-cart">
                             <h4 class="mt-1"><b>Rp. <?php echo number_format($items['price'],0,",",".")?></b></h4>
                         </div>
-                        <div class="col-md-1 ">
+                        <div class="col-md-1 text-right">
                           <?php echo anchor('user/cart/del/'.$items['rowid'],'<div class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></div>')?>
                         </div>
                     </div>

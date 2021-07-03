@@ -22,4 +22,11 @@ class Item_model extends CI_Model{
 		$query = $this->db->get();
         return $query;
 	}
+
+    public function search($key){
+		$this->db->from('tb_produk');
+        $this->db->like('nama_produk',$key, 'both');
+		$query = $this->db->get();
+        return $query;
+	}
 }

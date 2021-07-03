@@ -177,8 +177,11 @@ class Dashboard extends CI_Controller {
 
 	public function trans()
 	{
+		$this->load->model('hadiah_u_m');
+		$data['klaim_hadiah'] = $this->hadiah_u_m->get_claim($_SESSION['userid']);
+		// print_r($data['klaim_hadiah']->result());
 		$this->load->view('user/header');
-		$this->load->view('user/profil/transaction');
+		$this->load->view('user/profil/transaction',$data);
 		$this->load->view('user/footer');
 	}
 

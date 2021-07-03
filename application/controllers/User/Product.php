@@ -5,7 +5,13 @@ class Product extends CI_Controller {
 
 	public function index()
 	{
-		$data['item'] = $this->item_model->tampil_data()->result();
+		if(@$_GET['kategori']!=null){
+			$data['item'] = $this->item_model->get_by_kategori(@$_GET['kategori'])->result();
+		}else{
+			$data['item'] = $this->item_model->tampil_data()->result();
+		}
+		// echo @$kategori;
+		// print_r($data['item']);
 		$this->load->view('user/header');
 		$this->load->view('user/product/view_product',$data);
 		$this->load->view('user/footer');
@@ -23,7 +29,11 @@ class Product extends CI_Controller {
 		);
 		
 		$this->cart->insert($data);
-		redirect('user/product');
+		if(@$_GET['kategori']!=null){
+			redirect('user/product?kategori='.@$_GET['kategori']);
+		}else{
+			redirect('user/product');
+		}
 	}
 
 	public function detail_cart(){

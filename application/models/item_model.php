@@ -15,4 +15,11 @@ class Item_model extends CI_Model{
             return array();
         }
     }
+
+    public function get_by_kategori($id){
+		$this->db->from('tb_produk');
+        $this->db->where('id_kategori',$id);
+		$query = $this->db->get();
+        return $query;
+	}
 }

@@ -52,9 +52,9 @@
           <i class="fas fa-search"></i>
         </a>
         <div class="navbar-search-block nav-search">
-          <form class="form-inline">
+          <form class="form-inline" action="<?=site_url('user/product/search')?>" method="post">
             <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+              <input class="form-control form-control-navbar" type="text" name="search" placeholder="Search" aria-label="Search">
               <div class="input-group-append">
                 <button class="btn btn-navbar" type="submit">
                   <i class="fas fa-search"></i>

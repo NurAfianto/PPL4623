@@ -83,14 +83,16 @@
           <!-- <span class="badge badge-warning navbar-badge">15</span> -->
         </a>
         <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-          <span class="dropdown-item dropdown-header"><?=$_SESSION['nama']?></span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <img src="<?=base_url()?>assets/pict/icon/<?=print_user_detail()->level_user?>.png" alt="" width="25">&nbsp;&nbsp;&nbsp;<?=print_user_detail()->level_user?>
+          <a href="<?=site_url('user/profil')?>">
+            <span class="dropdown-item dropdown-header"><?=$_SESSION['nama']?></span>
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-cog"></i> &nbsp;&nbsp;&nbsp; Setting
+          <a href="<?=site_url('user/level')?>" class="dropdown-item">
+          <img src="<?=base_url()?>assets/pict/icon/<?=print_user_detail()->level_user?>.png" alt="" width="25">&nbsp;&nbsp;&nbsp;<?=print_user_detail()->level_user?>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="<?=site_url('user/transaction')?>" class="dropdown-item">
+          <i class="fas fa-sync"></i> &nbsp;&nbsp;&nbsp; Transaction
             <!-- <span class="float-right text-muted text-sm">12 hours</span> -->
           </a>
           <div class="dropdown-divider"></div>

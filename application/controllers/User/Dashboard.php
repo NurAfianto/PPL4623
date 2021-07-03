@@ -19,7 +19,15 @@ class Dashboard extends CI_Controller {
 
 	public function d()
 	{
-		$this->load->view('user/games/flush');
+		$this->load->model('siram_u_m');
+		$data = $this->siram_u_m->get($_SESSION['userid']);
+		if($data->num_rows()==0){
+			$data = $this->siram_u_m->get($_SESSION['userid'])->row();
+			$data['kekurangan'] = 300;
+		}else{
+			$data = $this->siram_u_m->get($_SESSION['userid'])->row();
+		}
+		$this->load->view('user/games/flush', $data);
 	}
 
 	public function egg()
@@ -184,6 +192,46 @@ class Dashboard extends CI_Controller {
 		$this->load->view('user/profil/transaction',$data);
 		$this->load->view('user/footer');
 	}
+
+	public function siram()
+	{
+
+		$post = $this->input->post(NULL, true);
+		$post['id_user'] = $_SESSION['userid'];
+		$post['tanggal'] = date('Y-m-d');
+		$this->load->model('Siram_u_m');
+		// $query = $this->Siram_u_m->add($post);
+		$pernah_siram = $this->Siram_u_m->check_pernah_siram($post);
+		$data['kode'] = 1;
+
+		if($pernah_siram->num_rows() > 0){
+			// echo json_encode('pernah');
+			$siram = $this->Siram_u_m->check_siram($post);
+			// echo json_encode($siram->row());
+			if($siram->num_rows() == 0){
+				if($post['kekurangan']==0){
+					// echo json_encode('kosongkan');
+					$query = $this->Siram_u_m->set_nol($post);
+					$this->load->model('Hadiah_u_m');
+					$post['nama'] = $_SESSION['nama'];
+					$post['email'] = $_SESSION['email'];
+					$post['poin'] = 200;
+					$query = $this->Hadiah_u_m->add_poin($post);
+					$data['kode'] = 2;
+				}else{
+					$query = $this->Siram_u_m->update($post);
+					// echo json_encode('kurangi');
+				}
+			}else{
+				$data['kode'] = 0;
+			}
+		}else{
+			$query = $this->Siram_u_m->add($post);
+			// echo json_encode('belum');
+		}
+		echo json_encode($data);
+	}
+
 
 	public function listhadiah()
 	{

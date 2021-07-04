@@ -17,7 +17,7 @@
 			?>
   <div class="col-md-12">
   <a href="<?=site_url('admin/banner')?>" class="btn btn-warning btn-md"><i class="fas fa-arrow-left"></i> Back</a>
-  <form method="post" action="<?php echo base_url(); ?>admin/banner/update">
+  <form action="<?php echo base_url(); ?>admin/banner/update" method="post" enctype="multipart/form-data">
         <div class="col-md-6 mx-auto mt-4">
         <input type="hidden" name="no" id="no" value="<?php echo $Banner->no; ?>"/>
           <div class="form-group">
@@ -26,10 +26,10 @@
           </div>
           <div class="form-group">
               <label for="gambar">Gambar</label>
-              <input class="form-control-file <?php echo form_error('gambar') ? 'is-invalid':'' ?>" type="file" name="gambar" />
-								<input type="hidden" name="old_image" value="<?php echo $Banner->gambar ?>" />
+              <input type="file" class="form-control-file"  name="gambar" >
+							
 								<div class="invalid-feedback"> 
-                <?php echo form_error('gambar') ?>
+                
           </div>
           </div>
           <div class="form-group">

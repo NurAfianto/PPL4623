@@ -13,7 +13,7 @@
     <tr>
       <th>No</th>
       <th>Nama Banner</th>
-      <th>Gambar</th>      
+      <th class="text-center">Gambar</th>      
       <th>Keterangan</th>
       <th class="text-center">Action</th>
     </tr>
@@ -26,12 +26,14 @@
 						<tr>
 							<td><?php echo $no++; ?></td>
 							<td><?php echo $row->nama_banner; ?></td>
-              <td><img src="<?php echo base_url('upload/banner/'.$row->gambar) ?>" width="64" />
-							</td>
+              <td class="text-center"><?php if($row->gambar != null){  ?>
+                <img src="<?php echo base_url('upload/banner/'.$row->gambar) ?>" width="64" />
+                <?php }else { echo 'Tidak ada gambar'; }  ?>
+              </td>
               <td><?php echo $row->keterangan; ?></td>
               <td class="text-center">
-                      <a href="<?php echo base_url(); ?>admin/banner/edit/<?php echo $row->no; ?>" class="btn btn-info btn-sm"><i class="far fa-edit"></i> Edit</a>
-                      <a href="<?php echo base_url(); ?>admin/banner/delete/<?php echo $row->no; ?>"class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin ingin Menghapus ?')"><i class="far fa-trash-alt"></i> Hapus</a>
+              <a href="<?=site_url('admin/banner/edit/'.$row->no)?>" class="btn btn-info btn-sm"><i class="far fa-edit"></i> Edit</a>
+              <a href="<?php echo base_url(); ?>admin/banner/delete/<?php echo $row->no; ?>"class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda Yakin ingin Menghapus ?')"><i class="far fa-trash-alt"></i> Hapus</a>
               </td>
 						</tr>
 						<?php

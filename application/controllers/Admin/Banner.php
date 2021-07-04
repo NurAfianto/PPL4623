@@ -48,22 +48,43 @@ class Banner extends CI_Controller {
 		$this->load->view('admin/banner/banner_edit',$data);
 		$this->load->view('admin/footer');
 	}
-	public function update()
-	{
+	public function update(){
 		$this->form_validation->set_rules('nama_banner','Nama Banner','required');
+		$post = $this->input->post(NULL, true);
+		// print_r($_FILES['gambar']);
+		$this->load->model('Banner_model');
+		$config['upload_path']		= "./upload/banner/";
+		$config['allowed_types']	= "gif|jpg|png|jpeg";
+		$config['max_size']			= 2048;
+		$config['file_name']		= 'banner-'.date('ymd').'-'.substr(md5(rand()),0,10);
+		$this->load->library('upload', $config);
+
 		if ($this->form_validation->run()==true)
         {
-		 	$no = $this->input->post('no');
-			$data['nama_banner'] = $this->input->post('nama_banner');
-			
-			if (!empty($_FILES["gambar"]["nama_banner"])) {
-				$this->gambar = $this->_uploadImage();
-			} else {
-				$this->gambar = $post["old_image"];
-			}
+			if(@$_FILES['gambar']['name'] != null){
+				
+				if($this->upload->do_upload('gambar')){
+					$gambar = $this->Banner_model->getById($post['no'])->gambar;
+					$path = 'upload/banner/'.$gambar;
+					//print_r($path);
 
-			$data['keterangan'] = $this->input->post('keterangan');
-			$this->Banner_model->update($data,$no);
+					chmod($path, 0777);
+					unlink($path);
+					$post['gambar'] = $this->upload->data('file_name');
+					$this->Banner_model->update($post,$post['no']);
+
+				}else{
+					$gambar = $this->Banner_model->getById($post['no'])->gambar;
+					$post['gambar'] =$gambar;
+					$this->Banner_model->update($post,$post['no']);
+				
+				}
+			}else{
+				$gambar = $this->Banner_model->getById($post['no'])->gambar;
+				$post['gambar'] =$gambar;
+				$this->Banner_model->update($post,$post['no']);
+			}
+		
 			redirect('admin/Banner');
 		}
 		else

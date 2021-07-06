@@ -46,13 +46,16 @@ function check_up_level(){
 
     if($poin_earned >= 0 && $poin_earned <500 && $user_level != 'Bronze'){
         $post['level_user'] = 'Bronze';
+        $ci->user_m->update_level($post);
     }else if($poin_earned >= 500 && $poin_earned <1000 && $user_level != 'Silver'){
         $post['level_user'] = 'Silver';
+        $ci->user_m->update_level($post);
     }else if($poin_earned >= 1000 && $poin_earned <2000 && $user_level != 'Gold'){
         $post['level_user'] = 'Gold';
+        $ci->user_m->update_level($post);
     }else if($poin_earned >= 2000 && $user_level != 'Platinum'){
         $post['level_user'] = 'Platinum';
+        $ci->user_m->update_level($post);
     }
 
-    $ci->user_m->update_level($post);
 }

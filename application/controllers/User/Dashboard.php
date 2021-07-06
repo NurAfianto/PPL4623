@@ -8,6 +8,7 @@ class Dashboard extends CI_Controller {
 		check_not_login();
 		check_admin();
 		date_default_timezone_set('Asia/Jakarta');
+		check_up_level();
 	}
 
 	public function index()

@@ -28,6 +28,14 @@ class User_m extends CI_Model {
         return $query;
 	}
 
+	public function get_details($nama,$email){
+		$this->db->from('tb_user_detail');
+		$this->db->where('nama', $nama);
+		$this->db->where('email', $email);
+		$query = $this->db->get();
+        return $query;
+	}
+
 	public function add($post){
 		$params = [
 			'nama' => $post['nama'],
@@ -104,6 +112,16 @@ class User_m extends CI_Model {
 
 		$this->db->where('id',$params['id_user']+1);
 		$this->db->update('tb_user',$params2);
+	}
+
+	public function update_level($post){
+		$params = [
+			'id_user' => $post['id_user'],
+			'level_user' => $post['level_user']
+		];
+
+		$this->db->where('id_user',$params['id_user']);
+		$this->db->update('tb_user_detail',$params);
 	}
 
 }

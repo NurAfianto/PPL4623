@@ -13,11 +13,12 @@ class Hadiah_u_m extends CI_Model {
 	}
 
 	public function get_claim($id=null){
-		$this->db->select('tb_claim_hadiah.*, tb_hadiah.poin, tb_hadiah.produk');
+		$this->db->select('tb_claim_hadiah.*, tb_hadiah.poin, tb_hadiah.produk, , tb_user.nama, tb_user.nama as nama_user');
 		$this->db->from('tb_claim_hadiah');
 		$this->db->join('tb_hadiah', 'tb_hadiah.id = tb_claim_hadiah.id_hadiah');
+		$this->db->join('tb_user', 'tb_user.id = tb_claim_hadiah.id_user');
 		if($id!=null){
-			$this->db->where('id_user',$id);
+			$this->db->where('tb_claim_hadiah.id_user',$id);
 		}
 		$this->db->order_by('datetime', 'DESC');
 		$query = $this->db->get();
@@ -59,4 +60,11 @@ class Hadiah_u_m extends CI_Model {
 		return $query;
 	}
 
+	public function update_status($id){
+		$params = [
+			'status' => 2
+		];
+		$this->db->where('id',$id);
+		$this->db->update('tb_claim_hadiah', $params);
+	}
 }

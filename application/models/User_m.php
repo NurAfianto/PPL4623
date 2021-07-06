@@ -122,6 +122,11 @@ class User_m extends CI_Model {
 
 		$this->db->where('id_user',$params['id_user']);
 		$this->db->update('tb_user_detail',$params);
+
+		$params = array(
+			'level' => $post['level_user']
+		);
+		$this->session->set_userdata($params);
 	}
 
 }

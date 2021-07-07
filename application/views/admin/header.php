@@ -139,6 +139,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="<?=site_url('admin/claim')?>" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Klaim Hadiah
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

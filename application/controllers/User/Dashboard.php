@@ -212,8 +212,11 @@ class Dashboard extends CI_Controller {
 	public function trans()
 	{
 		$this->load->model('hadiah_u_m');
+		$this->load->model('invoice_model');
 		$data['klaim_hadiah'] = $this->hadiah_u_m->get_claim($_SESSION['userid']);
-		// print_r($data['klaim_hadiah']->result());
+		$data['transaksi'] = $this->invoice_model->getById($_SESSION['userid']);
+		$data['products'] = $this->invoice_model->detail_item($_SESSION['userid']);
+		// print_r(($data['products'])->result());
 		$this->load->view('user/header');
 		$this->load->view('user/profil/transaction',$data);
 		$this->load->view('user/footer');

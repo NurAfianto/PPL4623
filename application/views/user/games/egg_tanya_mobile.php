@@ -13,20 +13,22 @@
   <link rel="stylesheet" href="<?=base_url()?>plugins/bootstrap-slider/css/bootstrap-slider.min.css">
   <link rel="stylesheet" href="<?=base_url()?>assets/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="<?=base_url()?>assets/css/style-user.css">
-  <link rel="stylesheet" href="<?=base_url()?>assets/css/style-flush.css">
+  <link rel="stylesheet" href="<?=base_url()?>assets/css/style-flush_mobile.css">
 </head>
 <body class="">
-
-    <a href="<?=site_url('user/games')?>" class="btn btn-back" style="position: fixed;display:block;top:0px;left:0px;">
-        <img src="<?=base_url('assets/pict/Icon/icon-back.png')?>" alt="" srcset="" class="img-siram" width="<?=$this->agent->is_mobile()==TRUE ? '60px' : null?>">
+<div class="bg-hutan">
+    <a href="<?=site_url('user/games')?>" class="btn btn-back">
+        <img src="<?=base_url('assets/pict/Icon/icon-back.png')?>" alt="" srcset="" class="img-siram">
     </a>
-    <div class="p-4" style="background-color: #d35400">
-        <div class="col-md-12 text-white text-center h3 mb-5">Reward Dart Cafe</div>
-        <div class="col-md-12 text-white text-center h2 mb-3">Poin Anda <?=print_user_detail()->poin?></div>
-        <div class="col-md-12 text-center">
-            <a href="<?=site_url('user/games')?>" class="btn btn-coklat col-md-6 mb-4 p-3 text-white btn-rounded" style="border-radius: 18px;font-size:18px">Kembali lagi besok untuk mendapat <b style="font-size:20px">5 poin</b></a>
-        </div>
+    <div class="">
+        <a href="">
+            <img src="<?=base_url('assets/pict/Icon/telur_apa.png')?>" alt="" srcset="" class="img-egg">
+        </a>
+        <img src="<?=base_url('assets/pict/Icon/sarang.png')?>" alt="" srcset="" class="img-sarang">
     </div>
+
+
+</div>
 
 <script src="<?=base_url()?>assets/plugins/jquery/jquery.min.js"></script>
 <script src="<?=base_url()?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>

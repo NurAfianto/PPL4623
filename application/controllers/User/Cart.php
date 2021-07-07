@@ -34,9 +34,9 @@ class Cart extends CI_Controller {
 
     public function checkout(){
         $isprocessed = $this->Invoice_model->index();
-        if($isprocessed){
+        if($isprocessed!=null){
             $this->cart->destroy();
-            redirect('user/dashboard');
+            redirect('user/resi?invoice='.$isprocessed);
         }else{
             echo"Maaf, Pesanan Anda Gagal diproses";
         }

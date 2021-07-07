@@ -31,7 +31,12 @@ class Dashboard extends CI_Controller {
 		}else{
 			$data = $this->siram_u_m->get($_SESSION['userid'])->row();
 		}
-		$this->load->view('user/games/flush', $data);
+		
+		if ($this->agent->is_mobile()){
+			$this->load->view('user/games/flush_mobile', $data);
+		}else{
+			$this->load->view('user/games/flush', $data);
+		}
 	}
 
 	public function egg()
@@ -45,9 +50,17 @@ class Dashboard extends CI_Controller {
 
 		if ($check_pecah_h->num_rows()==0){
 			// echo $check_login_h->num_rows()==0;
-			$this->load->view('user/games/egg');
+			if ($this->agent->is_mobile()){
+				$this->load->view('user/games/egg_mobile');
+			}else{
+				$this->load->view('user/games/egg');
+			}
 		}else{
-			$this->load->view('user/games/egg_tanya');
+			if ($this->agent->is_mobile()){
+				$this->load->view('user/games/egg_tanya_mobile');
+			}else{
+				$this->load->view('user/games/egg_tanya');
+			}
 		}
 	}
 
@@ -83,10 +96,18 @@ class Dashboard extends CI_Controller {
 			$poin8 = rand(1,100);
 			$poin9 = rand(1,100);
 			$data['poin'] = min($poin1,$poin2,$poin3,$poin4,$poin5,$poin6,$poin7,$poin8,$poin9);
-			$this->load->view('user/games/egg_open',$data);
+			if ($this->agent->is_mobile()){
+				$this->load->view('user/games/egg_open_mobile',$data);
+			}else{
+				$this->load->view('user/games/egg_open',$data);
+			}
 		}else{
 			$post['kode'] = 1;
-			$this->load->view('user/games/egg_tanya');
+			if ($this->agent->is_mobile()){
+				$this->load->view('user/games/egg_tanya_mobile');
+			}else{
+				$this->load->view('user/games/egg_tanya');
+			}
 		}
 	}
 
@@ -121,6 +142,7 @@ class Dashboard extends CI_Controller {
 		}else{
 			$post['kode'] = 1;
 		}
+		
 		$this->load->view('user/games/login_harian',$post);
 
 	}

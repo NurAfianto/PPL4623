@@ -13,8 +13,11 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{
+		$this->load->model('banner_model');
+		$data['item'] = $this->banner_model->getAll();
+		// print_r($data['item']);
 		$this->load->view('user/header');
-		$this->load->view('user/dashboard');
+		$this->load->view('user/dashboard', $data);
 		$this->load->view('user/footer');
 	}
 
@@ -249,6 +252,8 @@ class Dashboard extends CI_Controller {
 			$bol = 0;
 
 			if($post['level'] == 'Bronze' && $post['level_min'] =='Bronze'){
+				$bol = 1;
+			}else if($post['level_min'] == 'Bronze' && $post['level'] =='Silver'){
 				$bol = 1;
 			}else if($post['level_min'] == 'Bronze' && $post['level'] =='Gold'){
 				$bol = 1;

@@ -49,7 +49,7 @@ class Product extends CI_Controller {
 		
 		$this->cart->insert($data);
 		if(@$_GET['kategori']!=null){
-			redirect('user/product/search?search='.@$_GET['search']);
+			redirect('user/product?kategori='.@$_GET['kategori']);
 		}else{
 			redirect('user/product');
 		}

@@ -54,6 +54,34 @@ class Invoice_model extends CI_Model
         return $query;
     }
 
+    public function detail_item($id_user){
+        $this->db->select('*');
+        $this->db->from('tb_transaksi');
+        $this->db->join('tb_invoice', 'tb_transaksi.id_invoice = tb_invoice.id');
+        $this->db->where('id_user',$id_user);
+
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function update_status($id){
+		$params = [
+			'status' => 2
+		];
+		$this->db->where('id',$id);
+		$this->db->update('tb_invoice', $params);
+	}
+
+    
+
+    public function getById($id){
+        $this->db->from('tb_invoice');
+        $this->db->where('id_user',$id);
+
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function get_id_inv($no_inv){
         $this->db->select('id');
         $this->db->from('tb_invoice');
@@ -61,5 +89,35 @@ class Invoice_model extends CI_Model
         
         $query = $this->db->get();
         return $query->row();
+    }
+
+    public function get_all($id=null){
+        $this->db->select('tb_invoice.*, tb_user.nama');
+		$this->db->from('tb_invoice');
+		$this->db->join('tb_user', 'tb_invoice.id_user = tb_user.id');
+		if($id!=null){
+			$this->db->where('tb_invoice.id_user',$id);
+		}
+		$this->db->order_by('tanggal', 'ASC');
+		$query = $this->db->get();
+        return $query;
+    }
+
+    public function get_id($id){
+        $result = $this->db->where('id',$id)->limit(1)->get('tb_invoice');
+        if($result->num_rows() >0){
+            return $result->row();
+        }else{
+            return false;
+        }
+    }
+
+    public function get_id_transaction($id_inv){
+        $result = $this->db->where('id_invoice',$id_inv)->get('tb_transaksi');
+        if($result->num_rows() >0){
+            return $result->result();
+        }else{
+            return false;
+        }
     }
 }

@@ -25,14 +25,43 @@
                 </div>
               </div>
               <div class="card-body">
-                Check the Header part you can find Legacy vesion of style.
-                <br>
-                Start creating your amazing application!
+               <table class="table table-bordered table-striped">
+                <thead><tr>
+                  <th>No</th>
+                  <th>No Invoice</th>
+                  <th>Item</th>
+                  <th>Total</th>
+                  <th>Tanggal</th>
+                  <th>Status</th>
+                </tr></thead>
+                <tbody>
+                <?php $no=1; foreach($transaksi->result() as $key=>$items) :?>
+                    <tr>
+                      <td style="width: 3%;"><?=$no++?></td>
+                      <td><?=$items->no_invoice?></td>
+                      <td><table class="table table-borderless">
+                      <?php foreach($products->result() as $produk) : 
+                        if($produk->id_invoice==$items->id){
+                        ?>
+                      <tr>
+                      
+                        <td><?=$produk->jumlah?></td>
+                        <td><?=$produk->nama_produk?></td>
+                      </tr>
+                      <?php }
+                      endforeach;?>
+                      </table>
+                      </td>
+                      <td><?=$items->total?></td>
+                      <td><?=$items->tanggal?></td>
+                      <td class="text-center" style="width: 15%;"><button class="btn btn-<?=$items->status==1?'secondary':'success'?>"><?=$items->status==1?'Diproses':'Sukses'?></button></td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+               </table>
               </div>
               <!-- /.card-body -->
-              <div class="card-footer">
-                Footer
-              </div>
+              
               <!-- /.card-body -->
             </div>
             

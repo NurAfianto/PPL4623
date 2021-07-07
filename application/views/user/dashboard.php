@@ -12,20 +12,18 @@
               <div class="card-body p-0">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    <?php $no = 0;
+                    foreach($item as $key=>$row){ ?>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="<?=$no++?>" class="<?=$no == 0 ? 'active' : null?>"></li>
+                    <?php } ?>
                     </ol>
                 <div class="carousel-inner rounded-lg">
-                    <div class="carousel-item active">
-                        <img src="<?=base_url()?>assets/pict/icon/3 kopi.jpg" height="350" class="d-block w-100" alt="...">
+                    <?php $no = 1;
+                    foreach($item as $key=>$row){ ?>
+                    <div class="carousel-item <?=$no==1 ? 'active' : null?>">
+                        <img src="<?=base_url()?>upload/banner/<?=$row->gambar?>" height="350" class="d-block w-100" alt="...">
                     </div>
-                    <div class="carousel-item">
-                        <img src="<?=base_url()?>assets/pict/icon/3 kopi.jpg" height="350"class="d-block  w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="<?=base_url()?>assets/pict/icon/3 kopi.jpg" height="350" class="d-block  w-100" alt="...">
-                    </div>
+                    <?php $no++; } ?>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

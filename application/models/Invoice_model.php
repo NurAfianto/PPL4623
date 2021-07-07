@@ -8,11 +8,14 @@ class Invoice_model extends CI_Model
         $no_inv = $this->invoice_num($datetime,15,"INV-");
         $total = $this->cart->total();
         $tanggal = date('Y-m-d H:i:s');
+        $id_usr = $_SESSION['userid'];
 
         $invoice = [
             'no_invoice'    => $no_inv,
             'total'         => $total,
             'tanggal'       => $tanggal,
+            'id_user'       => $id_usr,
+            'status'        => 1,
         ];
 
         $this->db->insert('tb_invoice',$invoice);
@@ -29,7 +32,7 @@ class Invoice_model extends CI_Model
             ];
             $this->db->insert('tb_transaksi',$data);
         }
-        return TRUE;
+        return $no_inv;
     }
 
     public function invoice_num ($input, $pad_len = 7, $prefix = null) {
@@ -41,4 +44,22 @@ class Invoice_model extends CI_Model
 
         return str_pad($input, $pad_len, "0", STR_PAD_LEFT);
     }    
+
+    public function detail($id_inv){
+        $this->db->select('*');
+        $this->db->from('tb_transaksi');
+        $this->db->where('id_invoice',$id_inv);
+
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function get_id_inv($no_inv){
+        $this->db->select('id');
+        $this->db->from('tb_invoice');
+        $this->db->where('no_invoice',$no_inv);
+        
+        $query = $this->db->get();
+        return $query->row();
+    }
 }

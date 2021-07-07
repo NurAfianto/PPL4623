@@ -64,5 +64,14 @@ class Produk_model extends CI_Model {
 		$this->db->delete('tb_produk');
 	}
 
+	public function GetPoinById($id){
+		$this->db->select('poin');
+		$this->db->from('tb_produk');
+		$this->db->join('tb_kategori', 'tb_kategori.no = tb_produk.id_kategori');
+		$this->db->where('id_produk', $id);
+		$query = $this->db->get();
+        return $query;
+	}
+
 
 }
